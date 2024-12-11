@@ -20,9 +20,12 @@ zinit snippet OMZP::git
 zinit snippet OMZP::cabal
 zinit snippet OMZP::command-not-found
 
-# eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/lit.toml)"
-# eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/tokyo.omp.json)"
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/lit.json)"
+OMP_THEME="${XDG_DATA_HOME:-${HOME}/.config}/ohmyposh/lit.json"
+if [[ -f "$OMP_THEME"]]; then
+    eval "$(oh-my-posh init zsh --config $OMP_THEME)"
+else
+  git clone https://github.com/LitFill/ohmyposh.git "$(dirname $OMP_THEME)"
+fi
 eval "$(oh-my-posh completion zsh)"
 
 bindkey -e
@@ -34,12 +37,12 @@ HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_dups
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
 setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt sharehistory
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -72,3 +75,11 @@ eval "$(opam env)"
 
 
 [ -f "/home/litfill/.ghcup/env" ] && . "/home/litfill/.ghcup/env" # ghcup-env
+
+# Ensure required CLI tools are installed
+required_tools=("git" "zoxide" "fzf" "opam" "oh-my-posh" "nvim" "ghcup")
+for tool in "${required_tools[@]}"; do
+  if ! command -v "$tool" &>/dev/null; then
+    echo "Warning: '$tool' is not installed. Please install it to fully utilize this configuration."
+  fi
+done
