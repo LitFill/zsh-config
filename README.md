@@ -5,7 +5,7 @@ untuk mempermudah replikasi lingkunganku di perangkat baru.
 ## Usage
 
 ```sh
-git clone https://github.com/LitFill/zsh-config ~/.config
+git clone https://github.com/LitFill/zsh-config ~/.config/zsh/
 mv ~/.zshrc ~/.zshrc.backup
 ln -s ~/.config/zsh/.zshrc
 ```
