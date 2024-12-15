@@ -21,7 +21,7 @@ zinit snippet OMZP::cabal
 zinit snippet OMZP::command-not-found
 
 OMP_THEME="${XDG_DATA_HOME:-${HOME}/.config}/ohmyposh/lit.json"
-if [[ -f "$OMP_THEME"]]; then
+if [[ -f "$OMP_THEME" ]]; then
     eval "$(oh-my-posh init zsh --config $OMP_THEME)"
 else
   git clone https://github.com/LitFill/ohmyposh.git "$(dirname $OMP_THEME)"
