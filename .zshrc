@@ -59,6 +59,9 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.pack/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export LANG=id_ID.UTF-8
+export LC_ALL=id_ID.UTF-8
+export TZ='Asia/Jakarta'
 export EDITOR=nvim
 export TMUX_TMPDIR='/tmp'
 
