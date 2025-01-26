@@ -20,6 +20,8 @@ zinit snippet OMZP::git
 zinit snippet OMZP::cabal
 zinit snippet OMZP::command-not-found
 
+export PATH="$HOME/.local/bin:$PATH"
+
 OMP_THEME="${XDG_DATA_HOME:-${HOME}/.config}/ohmyposh/lit.json"
 if [[ -f "$OMP_THEME" ]]; then
     eval "$(oh-my-posh init zsh --config $OMP_THEME)"
