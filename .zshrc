@@ -71,10 +71,10 @@ source "${ALIASING}/alias.sh"
 
 # fastfetch -c ~/10.jsonc
 
-eval "$(opam env)"
+# eval "$(opam env)"
 
 
-[ -f "/home/litfill/.ghcup/env" ] && . "/home/litfill/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 # Ensure required CLI tools are installed
 required_tools=("git" "zoxide" "fzf" "opam" "oh-my-posh" "nvim" "ghcup")
