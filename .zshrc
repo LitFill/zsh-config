@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/root/.zsh/completions:"* ]]; then export FPATH="/root/.zsh/completions:$FPATH"; fi
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [[ ! -d "$ZINIT_HOME" ]]; then
@@ -18,9 +20,19 @@ zinit cdreplay -q
 
 zinit snippet OMZP::git
 zinit snippet OMZP::cabal
+zinit snippet OMZP::stack
 zinit snippet OMZP::command-not-found
 
 export PATH="$HOME/.local/bin:$PATH"
+
+ALIASING="${XDG_DATA_HOME:-${HOME}/.config}/alias"
+
+if [[ ! -d "$ALIASING" ]]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/LitFill/my-alias.git "$ALIASING"
+fi
+
+source "${ALIASING}/alias.sh"
 
 OMP_THEME="${XDG_DATA_HOME:-${HOME}/.config}/ohmyposh/lit.json"
 if [[ -f "$OMP_THEME" ]]; then
@@ -33,7 +45,6 @@ eval "$(oh-my-posh completion zsh)"
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^U' "source ~/.zshrc\n"
 
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -62,17 +73,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export LANG=id_ID.UTF-8
 export LC_ALL=id_ID.UTF-8
 export TZ='Asia/Jakarta'
-export EDITOR=nvim
+export EDITOR='nvim'
 export TMUX_TMPDIR='/tmp'
-
-ALIASING="${XDG_DATA_HOME:-${HOME}/.config}/alias"
-
-if [[ ! -d "$ALIASING" ]]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/LitFill/my-alias.git "$ALIASING"
-fi
-
-source "${ALIASING}/alias.sh"
 
 # fastfetch -c ~/10.jsonc
 
@@ -88,3 +90,7 @@ for tool in "${required_tools[@]}"; do
     echo "Warning: '$tool' is not installed. Please install it to fully utilize this configuration."
   fi
 done
+
+if [ -f "/root/.deno/env" ]; then
+    . "/root/.deno/env";
+fi
