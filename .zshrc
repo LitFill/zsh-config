@@ -40,7 +40,7 @@ if [[ -f "$OMP_THEME" ]]; then
 else
   git clone https://github.com/LitFill/ohmyposh.git "$(dirname $OMP_THEME)"
 fi
-eval "$(oh-my-posh completion zsh)"
+# eval "$(oh-my-posh completion zsh)"
 
 bindkey -e
 bindkey '^p' history-search-backward
@@ -69,9 +69,10 @@ eval "$(zoxide init --cmd=j zsh)"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.pack/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/racket/bin:$PATH"
 
 export LANG=id_ID.UTF-8
-export LC_ALL=id_ID.UTF-8
+# export LC_ALL=id_ID.UTF-8
 export TZ='Asia/Jakarta'
 export EDITOR='nvim'
 export TMUX_TMPDIR='/tmp'
@@ -94,3 +95,4 @@ done
 if [ -f "/root/.deno/env" ]; then
     . "/root/.deno/env";
 fi
+ln -s /mnt/wslg/runtime-dir/wayland-0* /run/user/1000/
