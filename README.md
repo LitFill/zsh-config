@@ -7,7 +7,7 @@ untuk mempermudah replikasi lingkunganku di perangkat baru.
 konfigurasi ini bergantung pada paket berikut:
 
 ```md
-git zoxide fzf opam nvim
+git zoxide fzf opam nvim zen-browser
 ```
 
 ```sh
