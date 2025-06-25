@@ -74,7 +74,7 @@ export LANG=id_ID.UTF-8
 export LC_ALL=id_ID.UTF-8
 export TZ='Asia/Jakarta'
 export EDITOR='nvim'
-export TMUX_TMPDIR='/tmp'
+#export TMUX_TMPDIR='/tmp'
 export BROWSER=/usr/bin/zen-browser
 
 # fastfetch -c ~/10.jsonc
